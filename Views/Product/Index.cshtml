@@ -1,0 +1,32 @@
+@model IEnumerable<StackWebApp.Models.ProductModel>
+
+@{
+    ViewData["Title"] = "Products";
+}
+
+<h1 class="text-center">Products</h1>
+
+<p>
+    <a asp-action="Create" class="create-new-link">Add New Product</a>
+</p>
+
+<div class="table-container">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th class="col-serial">@Html.DisplayNameFor(model => model.SerialNumber).ToString().Insert(6, " ")</th>
+                <th class="col-name">@Html.DisplayNameFor(model => model.Name)</th>
+                <th class="col-price">@Html.DisplayNameFor(model => model.Price)</th>
+            </tr>
+        </thead>
+        <tbody>
+        @foreach (var item in Model) {
+            <tr>
+                <td class="col-serial">@Html.DisplayFor(modelItem => item.SerialNumber)</td>
+                <td class="col-name">@Html.DisplayFor(modelItem => item.Name)</td>
+                <td class="col-price">@item.Price.ToString("C2")</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+</div>
